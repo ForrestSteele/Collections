@@ -1,20 +1,20 @@
-
+import java.util.Arrays;
 /**
  * Write a description of class stackADT here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class stackADT
+public class MyStack
 {
     // instance variables - replace the example below with your own
     /**
      * Constructor for objects of class stackADT
      */
-    private int[] stack;
-    private int top;
-    private int maxsize;
-    public stackADT()
+    private static int[] stack;
+    private static int top;
+    private static int maxsize;
+    public MyStack()
     {
         // initialise instance variables
         maxsize = 15;
@@ -22,40 +22,36 @@ public class stackADT
         top = 0;
     }
     
-    public void push(int num) {
+    public static void push(int num) {
         stack[top] = num;
         top++;
     }
     
-    public int pop() {
+    public static int pop() {
         int value = stack[top];
         stack[top] = 0;
         top--;
         return value;
     }
     
-    public int size() {
+    public static int size() {
         return top + 1;
     }
     
-    public int top() {
-        return stack[top];
+    public static int top() {
+        return stack[top - 1];
     }
 
-    public boolean isEmpty() {
+    public static boolean isEmpty() {
         return top == 0;
     }
     
-    public boolean isFull() {
+    public static boolean isFull() {
         return top == maxsize - 1;
     }
     
     public String toString() {
-        String contents = " ";
-        for (int i = 0; i < size(); i++) {
-            contents += stack[i];
-        }
-        return contents;
+        return Arrays.toString(stack);
     }
     
 }
