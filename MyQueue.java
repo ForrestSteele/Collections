@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 /**
  * Write a description of class MyQueue here.
  *
@@ -13,27 +13,52 @@ public class MyQueue
     private int[] queue;
     private int size;
     private int count;
+    private int maxsize;
     /**
      * Constructor for objects of class MyQueue
      */
-    public MyQueue()
+    public MyQueue(int size)
     {
         size = 8;
-        queue = new int[15];
+        maxsize = size;
+        queue = new int[maxsize];
         front = 0;
         back = 0;
     }
     
     public void enqueue(int num) {
-        for (int i = 0; i < size; i++) {
-            queue[i] = queue[i - 1];
-        }
-        queue[back%count] = num;
+        queue[back + 1] = num;
+        count++;
+        back++;
     }
     
-    public void dequeue() {
-        queue[back] = 0;
-        back--;
+    public int dequeue() {
+        int value = queue[front];
+        queue[front] = 0;
+        front++;
+        back++;
         count--;
+        return back;
     }
+    
+    public int front() {
+        return queue[front];
+    }
+    
+    public int size() {
+        return count;
+    }
+    
+    public boolean isEmpty() {
+        return count != 0;
+    }
+    
+    public boolean isFull() {
+        return count == maxsize;
+    }
+    
+    public String toString() {
+        return Arrays.toString(queue);
+    }
+    
 }

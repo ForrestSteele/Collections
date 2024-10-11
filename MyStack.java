@@ -14,10 +14,10 @@ public class MyStack
     private static int[] stack;
     private static int top;
     private static int maxsize;
-    public MyStack()
+    public MyStack(int size)
     {
         // initialise instance variables
-        maxsize = 15;
+        maxsize = size;
         stack = new int[maxsize];
         top = 0;
     }

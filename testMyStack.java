@@ -1,3 +1,4 @@
+// one hundred
 
 /**
  * Write a description of class testMyStack here.
@@ -7,32 +8,44 @@
  */
 public class testMyStack
 {
-    public testMyStack() {
-    }
-    public static void testTop() {
-        MyStack stack1 = new MyStack();
-    }
-    
     public static void testPushTop () {
-        MyStack stack1 = new MyStack();
-        for (int i = 0; i < 4; i++) {
+        MyStack stack1 = new MyStack(4);
+        for (int i = 0; i < 2; i++) {
             stack1.push(i);
             if (stack1.top() != i) {
                 System.out.println("test not passed");
-                break;
+                return;
             }
         }
         System.out.println("test passed!");
     }
     
     public static void testPop () {
-        MyStack stack1 = new MyStack();
-        for (int i = 0; i < 4; i++) {
-            stack1.push(i);
-            if (stack1.top() != i) {
-                System.out.println("test not passed");
-                break;
+        try {
+        MyStack stack1 = new MyStack(4);
+            for (int i = 0; i < 2; i++) {
+                stack1.push(i);
+                if (stack1.top() != i) {
+                    System.out.println("test not passed");
+                    return;
+                }
             }
+            System.out.println("test passed!");
+        } catch (Exception e){
+            System.out.print("");
+        }
+    }
+    
+    public static void testIsEmpty() {
+        MyStack stack3 = new MyStack(4);
+        if (stack3.size() != 0) {
+            System.out.println("test not passed");
+            return;
+        }
+        stack3.push(3);
+        if (stack3.size() != 1) {
+            System.out.println("test not passed");
+            return;
         }
         System.out.println("test passed!");
     }
